@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/bolg")
 class BlogMapping{
-    @GetMapping()
-    fun readOnePost():Int{
+    @GetMapping("/{idx}")
+    fun readOnePost(@PathVariable("idx") idx:Int ):Int{
         val list: List<Int> = listOf(0,1,2)
-        return list
+        return list[0]
     }
 
     @GetMapping()
@@ -22,13 +22,13 @@ class BlogMapping{
         return true
     }
 
-    @PutMapping()
-    fun modifyPost(): Boolean{
+    @PutMapping("/{idx}")
+    fun modifyPost(@PathVariable("idx") idx:Int ): Boolean{
         return true
     }
 
-    @DeleteMapping()
-    fun deletePost(): Boolean{
+    @DeleteMapping("/{idx}")
+    fun deletePost(@PathVariable("idx") idx:Int ): Boolean{
         return true
     }
 
