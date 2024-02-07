@@ -10,7 +10,7 @@ data class CreatePostReqDto(
 )
 
 @RestController
-@RequestMapping("/blog")
+@RequestMapping("/blog")//blog 경로를 매핑하는것 이로 인하여 /blog에 대한 응답이 가능
 class BlogController(val blogService: blogService){
     @GetMapping("/{idx}")
     fun readOnePost(@PathVariable("idx") idx:Int, @RequestParam("page", required= false, defaultValue = 0.toString()) page: Int ): Post{
