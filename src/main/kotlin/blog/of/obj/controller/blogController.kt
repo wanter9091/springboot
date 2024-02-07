@@ -10,7 +10,7 @@ data class CreatePostReqDto(
 )
 
 @RestController
-@RequestMapping("/bolg")
+@RequestMapping("/blog")
 class BlogController(val blogService: blogService){
     @GetMapping("/{idx}")
     fun readOnePost(@PathVariable("idx") idx:Int, @RequestParam("page", required= false, defaultValue = 0.toString()) page: Int ): Post{
