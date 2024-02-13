@@ -22,6 +22,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.springframework.boot:spring-boot-starter-web") // Spring Web dependency 추가
+	implementation("org.springframework.boot:spring-boot-starter-aop") // Spring aop dependency 추가
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
