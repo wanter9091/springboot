@@ -14,5 +14,20 @@ annotation class  Performance
 @Aspect
 @Component
 class LogPerformance{
+    //
+    @Around("@annotation(Performance)")
+    @Throws
+    //
+    private fun publicTarget(pjp: ProceedingJoinPoint): Any{
+        println("성능 측정을 시작합니다.")
+        val sw=StopWatch()
+        sw.start()
 
+        //
+        val result = pjp.proceed()
+        sw.stop()
+        println("성능 측정이 끝났습니다.")
+        //
+        return result
+    }
 }

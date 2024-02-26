@@ -1,5 +1,6 @@
 package blog.of.obj.controller
 
+import blog.of.obj.aop.Performance
 import org.springframework.web.bind.annotation.*;
 import blog.of.obj.service.blogService
 import blog.of.obj.service.Post
@@ -19,6 +20,7 @@ class BlogController(val blogService: blogService){
     }
 
     @GetMapping()
+    @Performance
     fun readAllPost(): List<Post>{
         return blogService.readAllPost()
     }
