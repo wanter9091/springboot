@@ -26,7 +26,7 @@ class BlogController(val blogService: blogService){
     }
 
     @PostMapping()
-    fun createPost(@RequestBody() createPostReqDto: CreatePostReqDto): Boolean{
+    fun createPost(@RequestBody() createPostReqDto: CreatePostReqDto): Boolean{// 1편의 코틀린 문법적인 AOP 적용 실패
         return blogService.createPost(createPostReqDto.title, createPostReqDto.body)
     }
 
