@@ -3,7 +3,7 @@ package blog.of.obj.controller
 import blog.of.obj.aop.Performance
 import org.springframework.web.bind.annotation.*;
 import blog.of.obj.service.BlogService
-import blog.of.obj.service.Post
+import blog.of.obj.entity.Post
 
 data class CreatePostReqDto(
     val title: String,
@@ -14,7 +14,7 @@ data class CreatePostReqDto(
 @RequestMapping("/blog")//blog 경로를 매핑하는것 이로 인하여 /blog에 대한 응답이 가능
 class BlogController(val blogService: BlogService){
     @GetMapping("/{idx}")
-    fun readOnePost(@PathVariable("idx") idx:Int, @RequestParam("page", required= false, defaultValue = 0.toString()) page: Int ): Post{
+    fun readOnePost(@PathVariable("idx") idx:String, @RequestParam("page", required= false, defaultValue = 0.toString()) page: Int ): Post{
         val list: List<Int> = listOf(0,1,2)
         return blogService.readOnePost(idx)
     }
@@ -31,12 +31,12 @@ class BlogController(val blogService: BlogService){
     }
 
     @PutMapping("/{idx}")
-    fun modifyPost(@PathVariable("idx") idx:Int, @RequestBody() createPostReqDto: CreatePostReqDto ): Boolean{
+    fun modifyPost(@PathVariable("idx") idx:String, @RequestBody() createPostReqDto: CreatePostReqDto ): Boolean{
         return blogService.modifyPost(idx, createPostReqDto.title, createPostReqDto.body)
     }
 
     @DeleteMapping("/{idx}")
-    fun deletePost(@PathVariable("idx") idx:Int ): Boolean{
+    fun deletePost(@PathVariable("idx") idx:String ): Boolean{
         return blogService.deletePost(idx)
     }
 
