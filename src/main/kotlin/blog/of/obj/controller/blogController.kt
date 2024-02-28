@@ -1,5 +1,6 @@
 package blog.of.obj.controller
 
+import blog.of.obj.aop.NativeKotlinPerformence
 import blog.of.obj.aop.Performance
 import org.springframework.web.bind.annotation.*;
 import blog.of.obj.service.blogService
@@ -26,8 +27,8 @@ class BlogController(val blogService: blogService){
     }
 
     @PostMapping()
-    fun createPost(@RequestBody() createPostReqDto: CreatePostReqDto): Boolean{// 1편의 코틀린 문법적인 AOP 적용 실패
-        return blogService.createPost(createPostReqDto.title, createPostReqDto.body)
+    fun createPost(@RequestBody() createPostReqDto: CreatePostReqDto)= NativeKotlinPerformence("test") {
+        return@NativeKotlinPerformence blogService.createPost(createPostReqDto.title, createPostReqDto.body)
     }
 
     @PutMapping("/{idx}")
