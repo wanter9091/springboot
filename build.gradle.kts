@@ -24,6 +24,15 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web") // Spring Web dependency 추가
 	implementation("org.springframework.boot:spring-boot-starter-aop") // Spring aop dependency 추가
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	implementation("org.springframework.boot:spring-boot-starter-mustache")
+	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+	implementation("org.jetbrains.kotlin:kotlin-reflect")
+	runtimeOnly("com.h2database:h2")
+
+	runtimeOnly("com.mysql:mysql-connector-j")  // DB 의존성 추가
+	implementation("org.springframework.boot:spring-boot-starter-jdbc") // DB 의존성 추가
 }
 
 tasks.withType<KotlinCompile> {
