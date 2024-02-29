@@ -9,3 +9,13 @@ class BlogApplication
 fun main(args: Array<String>) {
 	runApplication<BlogApplication>(*args)
 }
+
+/* docker DB start
+
+$ docker exec -it db.blog.com /bin/bash
+
+# mysql -u root -ppassword
+
+mysql> CREATE DATABASE blog;
+
+ */

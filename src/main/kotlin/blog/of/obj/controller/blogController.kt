@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import blog.of.obj.service.BlogService
 import blog.of.obj.entity.Post
 
+import java.util.*
+
 data class CreatePostReqDto(
     val title: String,
     val body: String
@@ -16,7 +18,6 @@ data class CreatePostReqDto(
 class BlogController(val blogService: BlogService){
     @GetMapping("/{idx}")
     fun readOnePost(@PathVariable("idx") idx:String, @RequestParam("page", required= false, defaultValue = 0.toString()) page: Int ): Post{
-        val list: List<Int> = listOf(0,1,2)
         return blogService.readOnePost(idx)
     }
 
@@ -27,6 +28,7 @@ class BlogController(val blogService: BlogService){
     }
 
     @PostMapping()
+    @Performance
     fun createPost(@RequestBody() createPostReqDto: CreatePostReqDto)= NativeKotlinPerformence("test") {
         return@NativeKotlinPerformence blogService.createPost(createPostReqDto.title, createPostReqDto.body)
     }
