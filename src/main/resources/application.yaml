@@ -1,10 +1,38 @@
 spring:
+  profiles:
+    group:
+      dev: dev
+      prod: prod
+      local: local
+---
+# common data.
+common: common-data
+
+spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/blog
-    username: root
-    password: password
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
   jpa:
     database: mysql
     show-sql: true
     hibernate:
       ddl-auto: update
+---
+spring.config.activate.on-profile: dev
+test:
+  a: 100
+  b: 100
+
+---
+spring.config.activate.on-profile: prod
+
+test:
+  a: 200
+  b: 200
+---
+spring.config.activate.on-profile: local
+
+test:
+  a: 200
+  b: 200
