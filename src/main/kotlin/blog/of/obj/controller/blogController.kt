@@ -5,6 +5,7 @@ import blog.of.obj.aop.Performance
 import org.springframework.web.bind.annotation.*;
 import blog.of.obj.service.BlogService
 import blog.of.obj.entity.Post
+import org.springframework.beans.factory.annotation.Value
 
 import java.util.*
 
@@ -16,6 +17,13 @@ data class CreatePostReqDto(
 @RestController
 @RequestMapping("/blog")//blog 경로를 매핑하는것 이로 인하여 /blog에 대한 응답이 가능
 class BlogController(val blogService: BlogService){
+
+    @Value("\${test.a}")
+    private val a:String=""
+
+    @Value("\${test.b}")
+    private val b:String=""
+
     @GetMapping("/{idx}")
     fun readOnePost(@PathVariable("idx") idx:String, @RequestParam("page", required= false, defaultValue = 0.toString()) page: Int ): Post{
         return blogService.readOnePost(idx)
